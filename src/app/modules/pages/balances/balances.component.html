@@ -1,0 +1,27 @@
+<mat-card class="balances-container">
+  <div>
+    <mat-checkbox (click)="toggleLowBalancesVisibility()" [ngModel]="showLowBalancesOnly">
+      Düşük bakiyeleri göster / gizle
+    </mat-checkbox>
+
+    <table mat-table [dataSource]="filterLowBalances()">
+      <ng-container matColumnDef="assetCode">
+        <th mat-header-cell *matHeaderCellDef>Para birimi</th>
+        <td mat-cell *matCellDef="let balance">{{ balance.assetCode }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="availableAmount">
+        <th mat-header-cell *matHeaderCellDef>İlgili para birimi cinsinden kullanılabilir miktar</th>
+        <td mat-cell *matCellDef="let balance">{{ formatNumberWithCommas(balance.availableAmount) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="availableAmountTRYValue">
+        <th mat-header-cell *matHeaderCellDef>İlgili para biriminin Türk Lirası cinsinden kullanılabilir miktarı</th>
+        <td mat-cell *matCellDef="let balance">{{ formatNumberWithCommas(balance.availableAmountTRYValue) }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['assetCode', 'availableAmount', 'availableAmountTRYValue']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['assetCode', 'availableAmount', 'availableAmountTRYValue'];"></tr>
+    </table>
+  </div>
+</mat-card>

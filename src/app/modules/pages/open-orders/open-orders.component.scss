@@ -1,0 +1,80 @@
+.open-orders-container {
+  max-width: 1200px;
+  margin: 70px auto 0;
+  padding: 20px;
+  height: 150vh;
+  max-height: 400px;
+}
+
+.open-orders-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.open-orders-container table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 16px;
+  margin-top: 10px;
+  table-layout: fixed;
+  overflow-x: auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.open-orders-container th,
+.open-orders-container td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.open-orders-container th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.open-orders-container div {
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .open-orders-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+
+    .open-orders-container table {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .open-orders-container {
+    padding: 10px;
+    margin-bottom: 100px;
+  }
+
+  .open-orders-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    max-height: 200px;
+
+    .open-orders-container table {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .open-orders-container {
+    margin-bottom: 250px;
+  }
+}

@@ -1,0 +1,52 @@
+<mat-card class="open-orders-container">
+    <div >
+      <h2>Açık Emirler</h2>
+  
+      <div *ngIf="openOrders.length > 0">
+        <table mat-table [dataSource]="openOrders" class="mat-table-fixed-layout">
+          <ng-container matColumnDef="marketCode">
+            <th mat-header-cell *matHeaderCellDef> Market Kodu </th>
+            <td mat-cell *matCellDef="let order"> {{ order.marketCode }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="orderSide">
+            <th mat-header-cell *matHeaderCellDef> Emir Türü </th>
+            <td mat-cell *matCellDef="let order"> {{ order.orderSide }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="orderDate">
+            <th mat-header-cell *matHeaderCellDef> Emir Tarihi </th>
+            <td mat-cell *matCellDef="let order"> {{ order.orderDate | date }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Fiyat </th>
+            <td mat-cell *matCellDef="let order"> {{ getFormattedAmount(order.price) }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="orderAmount">
+            <th mat-header-cell *matHeaderCellDef> Miktar </th>
+            <td mat-cell *matCellDef="let order"> {{ getFormattedAmount(order.orderAmount) }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="fillAmount">
+            <th mat-header-cell *matHeaderCellDef> Gerçekleşen Miktar </th>
+            <td mat-cell *matCellDef="let order"> {{ getFormattedAmount(order.fillAmount) }} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="fillPercent">
+            <th mat-header-cell *matHeaderCellDef> Gerçekleşme Yüzdesi </th>
+            <td mat-cell *matCellDef="let order"> {{ getFillPercent(order) }}% </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="['marketCode', 'orderSide', 'orderDate', 'price', 'orderAmount', 'fillAmount', 'fillPercent']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['marketCode', 'orderSide', 'orderDate', 'price', 'orderAmount', 'fillAmount', 'fillPercent']"></tr>
+        </table>
+      </div>
+  
+      <div *ngIf="openOrders.length === 0">
+        <p>Açık emir bilgisi bulunamadı.</p>
+      </div>
+    </div>
+  </mat-card>
+  

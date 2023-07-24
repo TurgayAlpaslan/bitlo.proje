@@ -1,0 +1,120 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 70px auto 0; 
+  padding: 20px;
+  
+  mat-card-header,
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+mat-card-subtitle,
+p {
+  margin-top: 5px;
+}
+
+  .content table {
+    width: 100%;
+  }
+  
+  .content td {
+    padding: 5px;
+    vertical-align: top;
+  }
+  
+  .content td:first-child {
+    font-weight: bold;
+  }
+  
+  
+
+  
+  mat-card {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    mat-card-header {
+      text-align: center;
+      padding-bottom: 10px;
+
+      mat-card-title {
+        font-size: 24px;
+      }
+
+      mat-card-subtitle {
+        font-size: 14px;
+      }
+    }
+
+    mat-card-content {
+      font-size: 16px;
+      padding: 0;
+
+      p {
+        margin: 5px 0;
+      }
+    }
+  }
+
+  .navigation-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    a {
+      margin: 0 10px;
+    }
+  }
+
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 767px) {
+    mat-card {
+      max-width: 100%;
+    }
+
+    .navigation-links {
+      flex-direction: column;
+
+      a {
+        margin: 5px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .profile-container {
+    max-width: 350px;
+    height: 350px;
+  }
+
+  .navigation-links {
+    flex-direction: column;
+
+    a {
+      margin: 5px 0;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .profile-container {
+    padding: 20px;
+    margin-bottom: 250px;
+  }
+}

@@ -1,0 +1,31 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #0a2363;
+    color: #ffffff;
+  }
+  
+  app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #0a2363;
+    color: #ffffff;
+  }
+  

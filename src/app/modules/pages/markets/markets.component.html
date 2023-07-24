@@ -1,0 +1,90 @@
+<div class="market-container">
+    <mat-card>
+        <mat-form-field>
+            <input matInput type="text" [(ngModel)]="searchTerm" (input)="filterMarkets()" placeholder="Ara..." />
+        </mat-form-field>
+
+        <div *ngIf="showTable">
+            <mat-table [dataSource]="filteredMarkets">
+                <ng-container matColumnDef="marketCode">
+                    <mat-header-cell *matHeaderCellDef> Market Code </mat-header-cell>
+                    <mat-cell *matCellDef="let market">
+                        <a [routerLink]="['/market', market.marketCode]">{{ market.marketCode }}</a>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="currentQuote">
+                    <mat-header-cell *matHeaderCellDef> Current Quote </mat-header-cell>
+                    <mat-cell *matCellDef="let market">{{ market.currentQuote | number }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="change24h">
+                    <mat-header-cell *matHeaderCellDef> Change 24H </mat-header-cell>
+                    <mat-cell *matCellDef="let market">{{ market.change24h | number }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="change24hPercent">
+                    <mat-header-cell *matHeaderCellDef> Change 24H Percent </mat-header-cell>
+                    <mat-cell *matCellDef="let market" [ngStyle]="getPercentColor(market.change24hPercent)">
+                        {{ market.change24hPercent }}%
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="highestQuote24h">
+                    <mat-header-cell *matHeaderCellDef> Highest Quote 24H </mat-header-cell>
+                    <mat-cell *matCellDef="let market">{{ market.highestQuote24h | number }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="lowestQuote24h">
+                    <mat-header-cell *matHeaderCellDef> Lowest Quote 24H </mat-header-cell>
+                    <mat-cell *matCellDef="let market">{{ market.lowestQuote24h | number }}</mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+
+        <div *ngIf="!showTable">
+            <p>Aramanız ile eşleşen sonuç bulunamadı.</p>
+        </div>
+        <ul>
+            <li>
+                {{ 'Bugün ' + getPositiveChangeMarketsCount() + ' adet marketin fiyat değişim yüzdesi pozitif olmuştur' }}
+                ({{ getPositiveChangeMarketsCount() }} >= 0, {{ getLargestChangeMarket()?.change24hPercent }} > 0)
+              </li>
+
+            <li *ngIf="getLargestIncreaseMarket() as largestIncreaseMarket">
+                {{ 'Bugün en fazla artış gösteren (' + largestIncreaseMarket.change24hPercent + '%) market ' +
+                largestIncreaseMarket.marketCode + ' marketi olmuştur.' }}
+            </li>
+            <li *ngIf="getLargestDecreaseMarket() as largestDecreaseMarket">
+                {{ 'Bugün en fazla değer kaybeden (' + largestDecreaseMarket.change24hPercent + '%) market ' +
+                largestDecreaseMarket.marketCode + ' marketi olmuştur.' }}
+            </li>
+
+            <li>
+                {{ 'Fiyatı (' + currentQuoteThreshold + ' TRY) üzerinde olan toplam ' +
+                getPriceAboveThresholdMarketsCount()
+                +
+                ' adet market vardır.' }}
+                ({{ getPriceAboveThresholdMarketsCount() }} >= 0)
+            </li>
+            <li>
+                {{ 'Fiyatı (' + currentQuoteThreshold + ' TRY) altında olan toplam ' +
+                getPriceBelowThresholdMarketsCount()
+                +
+                ' adet market vardır.' }}
+                ({{ getPriceBelowThresholdMarketsCount() }} >= 0)
+            </li>
+            <li>
+                {{ 'Tüm marketlerdeki fiyatların toplamının (' + getPriceAverage() + ' TRY) aritmetik ortalaması ' +
+                getPriceAverage() + ' TRY dir.' }}
+            </li>
+            <li>
+                {{ '1 BTC = ' + getBTCtoUSDPrice() + ' ABD dolarıdır.' }}
+            </li>
+        </ul>
+    </mat-card>
+
+</div>

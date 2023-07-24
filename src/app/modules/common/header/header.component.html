@@ -1,0 +1,18 @@
+<nav class="header" [ngStyle]="{ 'background-color': isLoggedIn ? '#0a2363' : '' }">
+  <div class="logo">
+    <img src="assets/images/bitlo_logo_white_@2x.webp" alt="Bitlo Logo" />
+  </div>
+  <div>
+    <a (click)="goToDashboard()">Ana Sayfa</a>
+    <a (click)="goToMarkets()">Marketler</a>
+    <a (click)="goToProfile()">Profil</a>
+    <a (click)="goToBalances()">Bakiyeler</a>
+    <a (click)="goToOpenOrders()">Açık Emirler</a>
+  </div>
+  <div class="login-logout">
+    <a *ngIf="isLoggedIn; else loginLink" href="/logout">Çıkış Yap</a>
+    <ng-template #loginLink>
+      <a href="/login">Giriş Yap</a>
+    </ng-template>
+  </div>
+</nav>

@@ -1,0 +1,39 @@
+.market-container {
+  max-width: 1200px;
+  margin: 70px auto 0; 
+  padding: 20px;
+  height: 150vh;
+  overflow-y: auto;
+  max-height: 550px;
+}
+
+@media (max-width: 1366px) {
+  .market-container {
+    max-height: 550px;
+    max-width: 1200px;
+  }
+}
+
+
+@media (min-width: 1920px) {
+  .market-container {
+    max-height: 750px;
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .market-container {
+    padding: 10px;
+    max-height: 400px;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 376px) {
+  .market-container {
+    padding: 10px;
+    max-height: 250px;
+    max-width: 350px;
+  }
+}

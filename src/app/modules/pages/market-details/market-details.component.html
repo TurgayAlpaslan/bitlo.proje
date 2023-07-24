@@ -1,0 +1,14 @@
+<mat-card *ngIf="marketDetails">
+  <div class="market-details-container">
+    <ul>
+      <li>Market Code: {{ marketDetails.marketCode }}</li>
+      <li>Current Quote: {{ getFormattedAmount(+marketDetails.currentQuote) }}</li>
+      <li>Change 24H: {{ getFormattedAmount(+marketDetails.change24h) }}</li>
+      <li>Highest Quote 24H: {{ getFormattedAmount(+marketDetails.highestQuote24h) }}</li>
+      <li>Lowest Quote 24H: {{ getFormattedAmount(+marketDetails.lowestQuote24h) }}</li>
+      <li>Weighted Average 24H: {{ getFormattedAmount(+marketDetails.weightedAverage24h) }}</li>
+
+    </ul>
+    <img [src]="getAssetLogoUrl()" alt="Market Logo">
+  </div>
+</mat-card>

@@ -1,0 +1,38 @@
+<div class="profile-container">
+  <ng-container *ngIf="profileData">
+    <mat-card>
+      <mat-card-header >
+        <mat-card-title>{{ profileData.firstName }} {{ profileData.lastName }}</mat-card-title>
+        <mat-card-subtitle>Identity Number: {{ profileData.identityNumber }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="content">
+        <table>
+          <tr>
+            <td>Date of Birth:</td>
+            <td>{{ formatDate(profileData.dateOfBirth) }}</td>
+          </tr>
+          <tr>
+            <td>Phone Number:</td>
+            <td>{{ formatPhoneNumber(profileData.phoneNumber) }}</td>
+          </tr>
+          <tr>
+            <td>Country:</td>
+            <td>{{ profileData.country }}</td>
+          </tr>
+          <tr>
+            <td>Last Update:</td>
+            <td>{{ formatDate(profileData.updateDate) }}</td>
+          </tr>
+        </table>
+      </mat-card-content>
+      
+    </mat-card>
+
+    <div class="navigation-links">
+      <a mat-button routerLink="/profil/bakiyeler">Bakiyeler</a>
+      <a mat-button routerLink="/profil/acik-emirler">Açık Emirler</a>
+    </div>
+  </ng-container>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

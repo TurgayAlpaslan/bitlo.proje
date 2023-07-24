@@ -9,5 +9,5 @@ export class DashboardComponent {
   name: string = 'Turgay Tarık Alpaslan';
   phoneNumber: string = '05385288219';
   githubLink: string = 'https://github.com/TurgayAlpaslan/bitlo.proje';
-  deployLink: string = '';
+  deployLink: string = 'https://bitlo-proje.vercel.app/login';
 }
